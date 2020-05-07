@@ -99,6 +99,8 @@ class SinglyLinkedList {
         let removedNode = this.tail.next;
         this.tail.next = null;
 
+        this.length--;
+
         return removedNode.val;
     }
 
