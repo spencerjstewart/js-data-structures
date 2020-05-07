@@ -91,7 +91,6 @@ class SinglyLinkedList {
         let pre = this.head;
 
         while (pre.next.next) {
-            console.log(`Current node val ${pre.val}`);
             pre = pre.next;
         }
 
@@ -104,6 +103,28 @@ class SinglyLinkedList {
         return removedNode.val;
     }
 
+    /**
+     * Pseudocode:
+     * - If no nodes, return undefined.
+     * - Store the current head in a variable.
+     * - Set the head to be the current head's next property.
+     * - Decrement length of list.
+     * - Return the value of the removed node.
+     */
+    shift () {
+        if (this.length === 0) {
+            return undefined;
+        }
+
+        let removedHead = this.head;
+
+        this.head = this.head.next;
+
+        this.length--;
+
+        return removedHead.val;
+    }
+
 }
 
 let list = new SinglyLinkedList();
@@ -114,6 +135,7 @@ list.push("one")
     .push("four");
 
 console.log(list.pop());
+console.log(list.shift());
 
 
 
