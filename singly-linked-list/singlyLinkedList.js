@@ -125,6 +125,31 @@ class SinglyLinkedList {
         return removedHead.val;
     }
 
+    /**
+     * Pseudocode:
+     * - Accept one argument.
+     * - Create a new node using argument.
+     * - If no head, set head and tail to be the newly created node.
+     * - Else set the newly created node's next property to be the current head.
+     * - Set the head property to be the newly created node.
+     * - Increment length of list.
+     * - Return list.
+     */
+    unshift (data) {
+        let newNode = new Node(data);
+
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+
+        this.length++;
+
+        return this;
+    }
 }
 
 let list = new SinglyLinkedList();
@@ -136,6 +161,13 @@ list.push("one")
 
 console.log(list.pop());
 console.log(list.shift());
+console.log(list.unshift("new first").shift());
+
+
+
+
+
+
 
 
 
