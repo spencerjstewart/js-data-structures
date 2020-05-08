@@ -1,0 +1,19 @@
+{
+  "name": "js-data-structures",
+  "version": "1.0.0",
+  "description": "Implementing data structures in JS.",
+  "main": "tests.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spencerjstewart/js-data-structures.git"
+  },
+  "author": "Spencer Stewart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spencerjstewart/js-data-structures/issues"
+  },
+  "homepage": "https://github.com/spencerjstewart/js-data-structures#readme"
+}
