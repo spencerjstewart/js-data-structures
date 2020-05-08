@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/spencerjstewart/js-data-structures/issues"
   },
-  "homepage": "https://github.com/spencerjstewart/js-data-structures#readme"
+  "homepage": "https://github.com/spencerjstewart/js-data-structures#readme",
+  "dependencies": {
+    "jstinytest": "^1.0.0"
+  }
 }
