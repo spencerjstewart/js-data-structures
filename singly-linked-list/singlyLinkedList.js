@@ -1,31 +1,28 @@
-/*
-    Linked list contains a head, tail, and length property.
-
-    Linked list consists of nodes, and each node has a value
-    and a pointer to another node or null.
-
-    Implement:
-    - create
-    - insertion
-    - removal
-    - search
-
-    linked lists vs. arrays:
-        Lists:
-            - not indexed
-            - no random access
-            - connected via nodes with a next pointer
-        Arrays:
-            - indexed in order
-            - possibly expensive insertion and deletion
-            - fast access using index
-
- */
-
 /**
- * val: piece of data
- * next: reference to next node
+ * SinglyLinkedList consists of a head, tail, and length property.
+ * The head and tail property contain Node or null.
+ *
+ * Each Node consists of a val and next property.
+ * The val property contains arbitrary data.
+ * The next property contains a reference to the next node or null.
+ *
+ * Implement:
+ * - create
+ * - insertion
+ * - removal
+ * - search
+ *
+ * linked lists vs. arrays:
+ * Lists:
+ * - not indexed
+ * - no random access
+ * - connected via nodes with a next pointer
+ * Arrays:
+ * - indexed in order
+ * - possibly expensive insertion and deletion
+ * - fast access using index
  */
+
 class Node {
     constructor (val) {
         this.val = val;
@@ -151,18 +148,6 @@ class SinglyLinkedList {
         return this;
     }
 }
-
-let list = new SinglyLinkedList();
-
-list.push("one")
-    .push("two")
-    .push("three")
-    .push("four");
-
-console.log(list.pop());
-console.log(list.shift());
-console.log(list.unshift("new first").shift());
-
 
 
 
