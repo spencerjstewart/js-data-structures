@@ -43,13 +43,16 @@ class SinglyLinkedList {
      * - Create a new node using the value passed to the function.
      * - If no head, set head and tail to new node.
      * - Else set next property of tail to be new node
-     *     and set
      * - Increment length of list.
      * - Return the list.
      * @param data - arbitrary data
      * @returns {SinglyLinkedList}
      */
     push (data) {
+        if (data === undefined) {
+            throw new Error('Parameter data is undefined.');
+        }
+
         if (this.head === null) {
             this.head = new Node(data);
             this.tail = this.head;
