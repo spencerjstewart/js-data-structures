@@ -50,7 +50,7 @@ class SinglyLinkedList {
      */
     push (data) {
         if (data === undefined) {
-            throw new Error('Parameter data is undefined.');
+            throw new Error(`Parameter 'data' is undefined.`);
         }
 
         if (this.head === null) {
@@ -77,15 +77,25 @@ class SinglyLinkedList {
     /**
      * Pseudocode:
      * - If no nodes, return undefined.
+     * - If length of list is 1, return tail, set head and tail to null.
      * - Loop through list until tail.
-     * - Set the next property of the 2nd to last node to be null.
-     * - Set the tail to be the 2nd to last node.
+     * - Set the next property of the 1st to last node to be null.
+     * - Set the tail to be the 1st to last node.
      * - Decrement length of list.
      * - Return the value of the node removed.
+     * @returns {Node.val}
      */
     pop () {
         if (this.length === 0) {
             return undefined;
+        }
+
+        if (this.length === 1) {
+            let removedNode = this.tail;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return removedNode.val;
         }
 
         let pre = this.head;
@@ -110,6 +120,7 @@ class SinglyLinkedList {
      * - Set the head to be the current head's next property.
      * - Decrement length of list.
      * - Return the value of the removed node.
+     * @returns {Node.val}
      */
     shift () {
         if (this.length === 0) {
@@ -134,8 +145,13 @@ class SinglyLinkedList {
      * - Set the head property to be the newly created node.
      * - Increment length of list.
      * - Return list.
+     * @returns {SinglyLinkedList}
      */
     unshift (data) {
+        if (data === undefined) {
+            throw new Error(`Parameter 'data' is undefined.`);
+        }
+
         let newNode = new Node(data);
 
         if (!this.head) {
