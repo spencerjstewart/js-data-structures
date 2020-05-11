@@ -120,6 +120,39 @@ tests({
         list.push('one');
         let result = list.shift();
         eq(result, 'one');
+        eq(list.head, null);
+        eq(list.tail, null);
+    },
+
+    'SinglyLinkedList\s shift instance method should set the head to be the current head\'s next property': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.push('two');
+        eq(list.head.val, 'one');
+        eq(list.tail.val, 'two');
+        list.shift();
+        eq(list.head.val, 'two');
+        eq(list.tail.val, 'two');
+    },
+
+    'SinglyLinkedList\'s shift instance method should decrement the length property of the instance.': function () {
+        let list = new SinglyLinkedList();
+
+        list.push('one');
+        list.shift();
+        eq(list.length, 0);
+
+        list.push('one');
+        list.push('two');
+        list.shift();
+        eq(list.length, 1);
+    },
+
+    'SinglyLinkedList\'s shift instance method should return the value of the removed node.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        let result = list.shift();
+        eq(result, 'one');
     },
 
     /**
@@ -130,5 +163,5 @@ tests({
         list.unshift('one');
         eq(list.head.val, 'one');
         eq(list.tail.val, 'one');
-    }
+    },
 });

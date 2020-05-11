@@ -127,6 +127,15 @@ class SinglyLinkedList {
             return undefined;
         }
 
+        if (this.length === 1) {
+            let removedHead = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return removedHead.val;
+        }
+
+
         let removedHead = this.head;
 
         this.head = this.head.next;
