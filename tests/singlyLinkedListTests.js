@@ -1,15 +1,15 @@
 tests({
     'SinglyLinkedList should have a constructor with properties head, tail, and length that default to null, null, and 0 respectively.': function () {
         let list = new SinglyLinkedList();
-        eq(list.head, null);
-        eq(list.tail, null);
-        eq(list.length, 0);
+        assertStrictEquals(list.head, null);
+        assertStrictEquals(list.tail, null);
+        assertStrictEquals(list.length, 0);
     },
 
     'Node should have a constructor that accepts one argument val with properties val and next that will be set to the argument passed in and null.': function () {
         let node = new Node('one');
-        eq(node.val, 'one');
-        eq(node.next, null);
+        assertStrictEquals(node.val, 'one');
+        assertStrictEquals(node.next, null);
     },
 
     /**
@@ -19,22 +19,22 @@ tests({
     'SinglyLinkedList\'s push instance method should accept one argument and creates a new node using the argument passed. If head is null, set the head and tail to the newly created node.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
-        eq(list.head.val, 'one');
-        eq(list.tail.val, 'one');
+        assertStrictEquals(list.head.val, 'one');
+        assertStrictEquals(list.tail.val, 'one');
     },
 
     'SinglyLinkedList\'s push instance method should set the next property of tail to be the new node if head contains a Node.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
         list.push('two');
-        eq(list.head.val, 'one');
-        eq(list.tail.val, 'two');
+        assertStrictEquals(list.head.val, 'one');
+        assertStrictEquals(list.tail.val, 'two');
     },
 
     'SinglyLinkedList\'s push instance method should increment the length of the SinglyLinkedList instance.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
-        eq(list.length, 1);
+        assertStrictEquals(list.length, 1);
     },
 
     'SinglyLinkedList\'s push instance method should throw an Error if no argument is passed in.': function () {
@@ -45,13 +45,13 @@ tests({
         } catch {
             threwError = true;
         }
-        eq(threwError, true);
+        assertStrictEquals(threwError, true);
     },
 
     'SinglyLinkedList\'s push instance method should return the list.': function () {
         let list = new SinglyLinkedList();
         let shouldBeSameList = list.push('one');
-        eq(list, shouldBeSameList);
+        assertStrictEquals(list, shouldBeSameList);
     },
 
     /**
@@ -60,16 +60,16 @@ tests({
 
     'SinglyLinkedList\'s pop instance method should return undefined if there are no nodes on the instance.': function () {
         let result = new SinglyLinkedList().pop();
-        eq(result, undefined);
+        assertStrictEquals(result, undefined);
     },
 
     'SinglyLinkedList\'s pop instance method should return the value of the tail property and set the head and tail property to null if the length is 1.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
         let result = list.pop();
-        eq(result, 'one');
-        eq(list.head, null);
-        eq(list.tail, null);
+        assertStrictEquals(result, 'one');
+        assertStrictEquals(list.head, null);
+        assertStrictEquals(list.tail, null);
     },
 
     'SinglyLinkedList\'s pop instance method should set the next property of the 1st to last node to be null.': function () {
@@ -77,9 +77,9 @@ tests({
         list.push('one');
         list.push('two');
         list.push('three');
-        eq(list.head.next.next.val, 'three');
+        assertStrictEquals(list.head.next.next.val, 'three');
         list.pop();
-        eq(list.head.next.next, null);
+        assertStrictEquals(list.head.next.next, null);
     },
 
     'SinglyLinkedList\'s pop instance method should set the tail to be the 1st to last node.': function () {
@@ -87,24 +87,24 @@ tests({
         list.push('one');
         list.push('two');
         list.push('three');
-        eq(list.tail.val, 'three');
+        assertStrictEquals(list.tail.val, 'three');
         list.pop();
-        eq(list.tail.val, 'two');
+        assertStrictEquals(list.tail.val, 'two');
     },
 
     'SinglyLinkedList\'s pop instance method should decrement the length of the instance.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
-        eq(list.length, 1);
+        assertStrictEquals(list.length, 1);
         list.pop();
-        eq(list.length, 0);
+        assertStrictEquals(list.length, 0);
     },
 
     'SinglyLinkedList\'s pop instance method should return the value of the removed node.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
         let result = list.pop();
-        eq(result, 'one');
+        assertStrictEquals(result, 'one');
     },
 
     /**
@@ -113,27 +113,27 @@ tests({
 
     'SinglyLinkedList\'s shift instance method should return undefined if there are no nodes on the instance.': function () {
         let result = new SinglyLinkedList().shift();
-        eq(result, undefined);
+        assertStrictEquals(result, undefined);
     },
 
     'SinglyLinkedList\s shift instance method should return the value of the head property and set the head and tail to be null if the length of the instance is 1.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
         let result = list.shift();
-        eq(result, 'one');
-        eq(list.head, null);
-        eq(list.tail, null);
+        assertStrictEquals(result, 'one');
+        assertStrictEquals(list.head, null);
+        assertStrictEquals(list.tail, null);
     },
 
     'SinglyLinkedList\s shift instance method should set the head to be the current head\'s next property': function () {
         let list = new SinglyLinkedList();
         list.push('one');
         list.push('two');
-        eq(list.head.val, 'one');
-        eq(list.tail.val, 'two');
+        assertStrictEquals(list.head.val, 'one');
+        assertStrictEquals(list.tail.val, 'two');
         list.shift();
-        eq(list.head.val, 'two');
-        eq(list.tail.val, 'two');
+        assertStrictEquals(list.head.val, 'two');
+        assertStrictEquals(list.tail.val, 'two');
     },
 
     'SinglyLinkedList\'s shift instance method should decrement the length property of the instance.': function () {
@@ -141,19 +141,19 @@ tests({
 
         list.push('one');
         list.shift();
-        eq(list.length, 0);
+        assertStrictEquals(list.length, 0);
 
         list.push('one');
         list.push('two');
         list.shift();
-        eq(list.length, 1);
+        assertStrictEquals(list.length, 1);
     },
 
     'SinglyLinkedList\'s shift instance method should return the value of the removed node.': function () {
         let list = new SinglyLinkedList();
         list.push('one');
         let result = list.shift();
-        eq(result, 'one');
+        assertStrictEquals(result, 'one');
     },
 
     /**
@@ -163,28 +163,28 @@ tests({
     'SinglyLinkedList\'s unshift instance method should accept one argument and create a new node using the argument passed in. If head is null, set the head and tail to the newly created node.': function () {
         let list = new SinglyLinkedList();
         list.unshift('one');
-        eq(list.head.val, 'one');
-        eq(list.tail.val, 'one');
+        assertStrictEquals(list.head.val, 'one');
+        assertStrictEquals(list.tail.val, 'one');
     },
 
     'SinglyLinkedList\'s unshift instance method should set the newly created node\'s next property to be the current head.': function () {
         let list = new SinglyLinkedList();
         list.unshift('one');
         list.unshift('two');
-        eq(list.head.val, 'two');
-        eq(list.head.next.val, 'one');
+        assertStrictEquals(list.head.val, 'two');
+        assertStrictEquals(list.head.next.val, 'one');
     },
 
     'SinglyLinkedList\'s unshift instance method should increment the length property of the instance.': function () {
         let list = new SinglyLinkedList();
         list.unshift('one');
-        eq(list.length, 1);
+        assertStrictEquals(list.length, 1);
     },
 
     'SinglyLinkedList\'s unshift instance method should return the instance.': function () {
         let list = new SinglyLinkedList();
         let returnedList = list.unshift('one');
-        eq(list, returnedList);
+        assertStrictEquals(list, returnedList);
     },
 
     'SinglyLinkedList\'s unshift instance method should throw an error if no argument is passed in.': function () {
@@ -195,6 +195,43 @@ tests({
         } catch {
             threwError = true;
         }
-        eq(threwError, true);
+        assertStrictEquals(threwError, true);
+    },
+
+    /**
+     * get()
+     */
+
+    'SinglyLinkedList\'s get instance method should accept an argument called index. If the index is <0 || >= the instance\'s length property, return null.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        let resultOfMinusOne = list.get(-1);
+        assertStrictEquals(resultOfMinusOne, null);
+        let resultOfEqualToListLength = list.get(list.length);
+        assertStrictEquals(resultOfEqualToListLength, null);
+    },
+
+    'SinglyLinkedList\'s get instance method should loop through list starting at the head and return the node at the passed in index.': function () {
+        let list = new SinglyLinkedList();
+
+        list.push('one');
+        list.push('two');
+        list.push('three');
+        list.push('four');
+
+        let result = list.get(0);
+        eq(result.val, 'one');
+
+        result = list.get(1);
+        eq(result.val, 'two');
+
+        result = list.get(2);
+        eq(result.val, 'three');
+
+        result = list.get(3);
+        eq(result.val, 'four');
+
+        result = list.get(4);
+        eq(result, null);
     }
 });
