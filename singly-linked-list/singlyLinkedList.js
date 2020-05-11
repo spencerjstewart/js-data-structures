@@ -175,6 +175,30 @@ class SinglyLinkedList {
 
         return this;
     }
+
+    /**
+     * Pseudocode:
+     * - Accept a 0-based index.
+     * - Return null if index < 0 or index >= this.length
+     * - Loop through list until reaching the index and return the node at that index.
+     * @returns {Node}
+     */
+    get (index) {
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+
+        let previousNode = this.head;
+        let nextNode = null;
+        for (let i = 0; i < this.length; i++) {
+            if (i !== index) {
+                previousNode = previousNode.next;
+                nextNode = previousNode.next;
+            } else {
+                return previousNode;
+            }
+        }
+    }
 }
 
 
