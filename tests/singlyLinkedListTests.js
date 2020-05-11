@@ -110,6 +110,7 @@ tests({
     /**
      * shift()
      */
+
     'SinglyLinkedList\'s shift instance method should return undefined if there are no nodes on the instance.': function () {
         let result = new SinglyLinkedList().shift();
         eq(result, undefined);
@@ -158,10 +159,42 @@ tests({
     /**
      * unshift()
      */
+
     'SinglyLinkedList\'s unshift instance method should accept one argument and create a new node using the argument passed in. If head is null, set the head and tail to the newly created node.': function () {
         let list = new SinglyLinkedList();
         list.unshift('one');
         eq(list.head.val, 'one');
         eq(list.tail.val, 'one');
     },
+
+    'SinglyLinkedList\'s unshift instance method should set the newly created node\'s next property to be the current head.': function () {
+        let list = new SinglyLinkedList();
+        list.unshift('one');
+        list.unshift('two');
+        eq(list.head.val, 'two');
+        eq(list.head.next.val, 'one');
+    },
+
+    'SinglyLinkedList\'s unshift instance method should increment the length property of the instance.': function () {
+        let list = new SinglyLinkedList();
+        list.unshift('one');
+        eq(list.length, 1);
+    },
+
+    'SinglyLinkedList\'s unshift instance method should return the instance.': function () {
+        let list = new SinglyLinkedList();
+        let returnedList = list.unshift('one');
+        eq(list, returnedList);
+    },
+
+    'SinglyLinkedList\'s unshift instance method should throw an error if no argument is passed in.': function () {
+        let list = new SinglyLinkedList();
+        let threwError = false;
+        try {
+            list.unshift();
+        } catch {
+            threwError = true;
+        }
+        eq(threwError, true);
+    }
 });
