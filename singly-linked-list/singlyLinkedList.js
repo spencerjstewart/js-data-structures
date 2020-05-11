@@ -199,7 +199,31 @@ class SinglyLinkedList {
             }
         }
     }
+
+    /**
+     * Pseudocode:
+     * - Accept some data and a 0-based index.
+     * - Use get() to find the node.
+     * - If node not found, return false.
+     * - If node is found, set the value of the node to be the value passed to the function and return true.
+     */
+    set (data, index) {
+        let node = this.get(index);
+        if (node) {
+            node.val = data;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
+
+
+
+
+
+
 
 
 

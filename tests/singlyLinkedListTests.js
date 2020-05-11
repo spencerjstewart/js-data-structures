@@ -233,5 +233,45 @@ tests({
 
         result = list.get(4);
         eq(result, null);
+    },
+
+    /**
+     * set()
+     */
+
+    'SinglyLinkedList\'s set method should accept some data and a 0-based index. If node not found at the index, return false.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        let result = list.set('something', 1);
+        eq(result, false);
+    },
+
+    'SinglyLinkedList\'s set method should return true if node is found at the index passed in as the second argument.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        let result = list.set('something', 0);
+        eq(result, true);
+    },
+
+    'SinglyLinkedList\'s set method should set the value of the node found to be the value passed in as the first argument and return ': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.set('something', 0);
+        eq(list.get(0).val, 'something');
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
