@@ -274,6 +274,34 @@ class SinglyLinkedList {
 
         return unlinkedNode.val;
     }
+
+    /**
+     * Pseudocode:
+     * - Create variable called next.
+     * - Create variable called prev.
+     * - Create variable called current, initialize to head.
+     *
+     * - Set next to be the next property of current.
+     * - Set the next property of current to be the prev property.
+     * - Set current variable to be the value of the next variable.
+     */
+    reverse () {
+
+        let next = null;
+        let prev = null;
+        let current = this.head;
+
+        for (let i = 0; i < this.length; i++) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        let oldTail = this.tail;
+        this.tail = this.head;
+        this.head = oldTail;
+    }
 }
 
 

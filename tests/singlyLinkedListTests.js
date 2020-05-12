@@ -375,6 +375,24 @@ tests({
         list.push('four');
         eq(list.remove(list.length - 1), 'four');
         eq(list.remove(1), 'two');
+    },
+
+    /**
+     * reverse()
+     * TODO: Write more detailed tests.
+     */
+
+    'SinglyLinkedList\'s reverse method should reverse list in place.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.push('two');
+        list.push('three');
+        list.push('four');
+        list.reverse();
+        eq(list.head.val, 'four');
+        eq(list.head.next.val, 'three');
+        eq(list.head.next.next.val, 'two');
+        eq(list.head.next.next.next.val, 'one');
     }
 });
 
