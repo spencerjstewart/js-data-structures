@@ -258,8 +258,127 @@ tests({
         list.push('one');
         list.set('something', 0);
         eq(list.get(0).val, 'something');
+    },
+
+    /**
+     * insert()
+     */
+
+    'SinglyLinkedList\'s insert method should return false if the index passed in is < 0 || > the length property of the instance.': function () {
+        let list = new SinglyLinkedList();
+        let result1 = list.insert('something', -1);
+        eq(result1, false);
+        let result2 = list.insert('something', list.length + 1);
+        eq(result2, false);
+    },
+
+    'SinglyLinkedList\'s insert method should push a new node to the end of the list if the index is the same as the length property of the instance.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.insert('two', list.length);
+        eq(list.tail.val, 'two');
+    },
+
+    'SinglyLinkedList\'s insert method should unshift a node to the beginning of the list if the index is 0.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.insert('two', 0);
+        eq(list.head.val, 'two');
+    },
+
+    'SinglyLinkedList\'s insert method should use the get method to access the node at index - 1 then set the next property on that node to be the newly created node.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.push('two');
+        list.push('three');
+        list.insert('something', 2);
+        eq(list.get(1).next.val, 'something');
+    },
+
+    'SinglyLinkedList\'s insert method should set the next property of the newly created node, to the previous node\'s previous next node.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.push('two');
+        list.push('three');
+        list.insert('something', 2);
+        eq(list.get(2).next.val, 'three');
+    },
+
+    'SinglyLinkedList\'s insert method should increment the length property of the instance.': function () {
+        let list = new SinglyLinkedList();
+        list.insert('one', 0);
+        list.insert('two', 1);
+        eq(list.length, 2);
+    },
+
+    'SinglyLinkedList\'s insert method should return true if a Node is successfully inserted.': function () {
+        let list = new SinglyLinkedList();
+        let result = list.insert('one', 0);
+        if (list.head.val === 'one') {
+            eq(result, true);
+        } else {
+            eq(1, 2);
+        }
+    },
+
+    /**
+     * remove()
+     */
+
+    'SinglyLinkedList\'s remove method should return undefined if the index passed in is < 0 || > length property.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.push('two');
+        let result = list.remove(list.length);
+        eq(result, undefined);
+        result = list.remove(-1);
+        eq(result, undefined);
+    },
+
+    'SinglyLinkedList\'s remove method should pop if index === length - 1.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        eq(list.remove(0), 'one');
+    },
+
+    'SinglyLinkedList\'s remove method should shift if index === 0.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        eq(list.remove(0),'one');
+    },
+
+    'SinglyLinkedList\'s remove method should access the node at index - 1 and set the next property on that node to be the next of the next node.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.push('two');
+        list.push('three');
+        list.push('four');
+        list.remove(2);
+        eq(list.get(1).next.val, 'four');
+    },
+
+    'SinglyLinkedList\'s remove method should decrement the length property of the instance.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        list.remove(0);
+        eq(list.length, 0);
+    },
+
+    'SinglyLinkedList\'s remove method should return the value of the removed node.': function () {
+        let list = new SinglyLinkedList();
+        list.push('one');
+        eq(list.remove(0), 'one');
+
+        list.push('one');
+        list.push('two');
+        list.push('three');
+        list.push('four');
+        eq(list.remove(list.length - 1), 'four');
+        eq(list.remove(1), 'two');
     }
 });
+
+
 
 
 

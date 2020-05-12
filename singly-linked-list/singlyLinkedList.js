@@ -216,6 +216,64 @@ class SinglyLinkedList {
             return false;
         }
     }
+
+    /**
+     * Pseudocode:
+     * - Accept some data and a 0-based index.
+     * - If the index is < 0 || >= this.length, return false.
+     * - If the index is the same as the length, push a new node to the end of the list.
+     * - If the index is 0, behavior is same as unshift.
+     * - Else use get method to access node at index - 1.
+     * - Set next property on index - 1 node to be the new node.
+     * - Set the next property on newly created node to be next node of the index - 1 node.
+     * - Increment length of list.
+     * - Return true. 
+     */
+
+    insert (data, index) {
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+
+        if (index === this.length) {
+            this.push(data);
+            return true;
+        }
+
+        if (index === 0) {
+            this.unshift(data);
+            return true;
+        }
+
+        let newNode = new Node(data);
+        newNode.next = this.get(index - 1).next;
+        this.get(index - 1).next = newNode;
+
+        this.length++;
+        return true;
+    }
+
+    remove (index) {
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        }
+
+        if (index === 0) {
+            return this.shift();
+        }
+
+        if (index === this.length - 1) {
+            return this.pop();
+        }
+
+        let nodeToBeRelinked = this.get(index - 1);
+        let unlinkedNode = nodeToBeRelinked.next;
+        nodeToBeRelinked.next = unlinkedNode.next;
+
+        this.length--;
+
+        return unlinkedNode.val;
+    }
 }
 
 
