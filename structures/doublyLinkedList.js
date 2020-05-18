@@ -42,6 +42,35 @@ class DoublyLinkedList {
 
         return this;
     }
+
+    /**
+     * If no head, return undefined.
+     * If length is 1, set head and tail to be null.
+     * Set node before tail to be tail.
+     * Set new tail's next property to null.
+     * Decrement length.
+     * Return removed node val.
+     */
+    pop () {
+        if (this.length === 0) {
+            return undefined;
+        }
+
+        if (this.length === 1) {
+            let dereferencedNodeVal = this.head.val;
+            this.head = null;
+            this.tail = null;
+            return dereferencedNodeVal;
+        }
+
+        let dereferencedNodeVal = this.tail.val;
+        this.tail = this.tail.prev;
+        this.tail.next = null;
+
+        this.length--;
+
+        return dereferencedNodeVal;
+    }
 }
 
 
