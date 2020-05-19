@@ -71,6 +71,36 @@ class DoublyLinkedList {
 
         return dereferencedNodeVal;
     }
+
+    /**
+     * If length is 0, return undefined.
+     * Store current head.
+     * If length is 1, set head and tail to null.
+     * Set head to be next of old head.
+     * Set head prev property to null.
+     * Decrement length.
+     * Return value of old head.
+     */
+    shift () {
+        if (this.length === 0) {
+            return undefined;
+        }
+
+        let removedHead = this.head;
+
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+            return removedHead.val;
+        }
+
+        this.head = removedHead.next;
+        this.head.prev = null;
+
+        this.length--;
+
+        return removedHead.val;
+    }
 }
 
 

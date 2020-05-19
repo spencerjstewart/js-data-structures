@@ -92,5 +92,62 @@ tests({
         list.push("two");
         let result = list.pop();
         eq(result, "two");
+    },
+
+    // shift
+
+    'Return undefined if length is 0.': function () {
+        let list = new DoublyLinkedList();
+        let result = list.shift();
+        eq(result, undefined);
+    },
+
+    'If length is 1, set head and tail to null and return val of old head.': function () {
+        let list = new DoublyLinkedList();
+        list.push("one");
+        list.shift();
+        eq(list.head, null);
+        eq(list.tail, null);
+    },
+
+    'Set head to be the next of old head.': function () {
+        let list = new DoublyLinkedList();
+        list.push("one");
+        list.push("two");
+        list.shift();
+        eq(list.head.val, 'two');
+    },
+
+    'Set head prev property to be null.': function () {
+        let list = new DoublyLinkedList();
+        list.push("one");
+        list.push("two");
+        list.shift();
+        eq(list.head.prev, null);
+    },
+
+    'Shift should decrement length.': function () {
+        let list = new DoublyLinkedList();
+        list.push("one");
+        list.push("two");
+        list.shift();
+        eq(list.length, 1);
+    },
+
+    'Shift should return the value of old head.': function () {
+        let list = new DoublyLinkedList();
+        list.push("one");
+        list.push("two");
+        let result = list.shift();
+        eq(result, 'one');
     }
 });
+
+
+
+
+
+
+
+
+
