@@ -101,6 +101,33 @@ class DoublyLinkedList {
 
         return removedHead.val;
     }
+
+    /**
+     * If length is 0
+     *     set head to new node
+     *     set tail to new node
+     * Else
+     *     set prev on head to new node
+     *     set next on new node to head
+     *     update head to new node
+     * Increment length
+     * Return list
+     */
+    unshift (data) {
+        let newNode = new Node(data);
+
+        if (this.head === null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.head.prev = newNode;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+
+        this.length++;
+        return this;
+    }
 }
 
 

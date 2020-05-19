@@ -140,6 +140,37 @@ tests({
         list.push("two");
         let result = list.shift();
         eq(result, 'one');
+    },
+
+    // unshift
+
+    'If length is 0, set head and tail to new node.': function () {
+        let list = new DoublyLinkedList();
+        list.unshift("one");
+        eq(list.head.val, 'one');
+        eq(list.tail.val, 'one');
+    },
+
+    'Set previous node of head to be the new node and the next node on the new node to be the old head.': function () {
+        let list = new DoublyLinkedList();
+        list.unshift("one");
+        list.unshift("two");
+        eq(list.head.val, 'two');
+        eq(list.tail.val, 'one');
+    },
+
+    'Increment length': function () {
+        let list = new DoublyLinkedList();
+        list.unshift("one");
+        eq(list.length, 1);
+        list.unshift("two");
+        eq(list.length, 2);
+    },
+
+    'Shift should return the list.': function () {
+        let list = new DoublyLinkedList();
+        let returnedList = list.unshift("one");
+        eq(list, returnedList);
     }
 });
 
